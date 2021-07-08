@@ -1,3 +1,15 @@
 <a href="/profile/{{_id}}">Profile</a> <!-- dinamic view -->
 
-
+{{#each allUsers}}
+<div>
+    <ul>
+        <li> Role:{{role}}</li>
+        <li> Gender: {{gender}}</li>
+        <li> Username: {{username}}</li>
+        <li> Name: {{name}}</li>
+        <li> Last Name: {{lastname}}</li>
+        <button>X</button>
+        <button>Like</button>
+    </ul>
+</div>
+  {{/each}}

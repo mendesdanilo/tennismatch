@@ -16,7 +16,7 @@ const userSchema = new Schema(
     },
     name: String,
     lastname: String,
-    gender: String,
+    gender: String, //male or female
     division: String,
     country: String,
     age: Number,
