@@ -1,0 +1,20 @@
+<h2>SignUp</h2>
+<form action="/signup" method="POST">
+    <label for="">Student or Coach</label>
+    <input type="role" name="role" required />
+    
+    <label for="">Gender</label>
+    <input type="text" name="gender" required />
+
+    <label for="">Username</label>
+    <input type="text" name="username" required />
+
+    <label for="">Password</label>
+    <input type="password" name="password" required />
+
+    <button type="submit">Create Account</button>
+</form>
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}} 
+
