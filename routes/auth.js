@@ -117,26 +117,43 @@ router.post("/logout", (req, res) => {
 //home
 router.get("/home", async (req, res) => {
   const userId = req.session.currentUser._id; //get the id of the logged in user
-  //console.log("user id", userId); 
+  //console.log("user id", userId);
   const theUser = await User.findById(userId); //find the user with that id in the database
   //console.log(theUser.role);
 
   let allUsers;
 
-  if (theUser.role === "coach"){
-    allUsers = await User.find({ role: "student" }) //shows users that are students 
+  if (theUser.role === "coach") {
+    allUsers = await User.find({ role: "student" }); //shows users that are students
     //console.log("all coaches", allUsers)
   } else {
     allUsers = await User.find({ role: "coach" }); //shows users that are coaches
     //console.log("students", allUsers);
     // if its an object(theUser) no need for curly braces
   }
-  res.render("home", { allUsers });  //renders the home to access the user information
-}); 
+  res.render("home", { allUsers }); //renders the home to access the user information
+});
 
-router.post("/home/favorites", async (req,res) => {
+//click like button so we can save the favorite on the user profile
+router.post("/user/:userId/addfavorite", requireLogin, async (req, res) => {
+  // console.log("favorites", req.session.currentUser.favorites)
 
-})
+  //1. Get user by id -> req.params.id
+  const userDetails = await User.findById(req.params.userId);
+  //2. Obter current logged user
+
+  // if
+  await User.findByIdAndUpdate(req.session.currentUser._id, {
+    $push: { favorites: userDetails },
+  });
+
+  res.redirect("/home");
+});
+
+//3. push do User para o array favorites que o loggeduser tem
+// $push: { currentUser: req.params.userId}
+
+// res.redirect(`/favorites/${req.params.userId}`);
 
 //profile
 router.get("/profile/:userId", async (req, res) => {
@@ -144,5 +161,11 @@ router.get("/profile/:userId", async (req, res) => {
   //console.log("all coaches", allUsers)
   res.render("profile", theUser);
 });
+
+//get Favorites
+//dentro da rota criar um find const userDetail = User.find(req.session.currentUser._id).populate("favorites")
+//res.render("favorites", userDetail)
+//{{each favorites}} 
+
 
 module.exports = router;

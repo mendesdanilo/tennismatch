@@ -50,10 +50,10 @@ function getCurrentLoggedUser(req, res, next) {
 app.use(getCurrentLoggedUser);
 
 // default value for title local
-const projectName = "tennis_project";
-const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
+//const projectName = "tennis Match";
+//const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
+//app.locals.title = `${capitalized(projectName)}`;
 
 // 👇 Start handling routes here
 const index = require("./routes/index");
