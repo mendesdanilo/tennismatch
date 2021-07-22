@@ -1,0 +1,21 @@
+<h4>Login</h4>
+<div class="div-logsig">
+<form action="/login" method="POST">
+    <ul>
+     <li>
+        <label for="">Username</label>
+        <input type="text" name="username" required />
+     </li>
+
+     <li>
+        <label for="">Password</label>
+        <input type="password" name="password" required />
+     </li>
+    </ul>
+    <button type="submit">Login</button>
+    <p>Don't have an account ? Sign Up <a href="/signup">here</a></p>
+</form>
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}} 
+</div>

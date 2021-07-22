@@ -1,0 +1,21 @@
+<a href="/profile/{{_id}}">Profile</a> <!-- dinamic view -->
+
+{{#each allUsers}}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <img src="" class="card-img-top" alt="">
+        <ul>
+        <li> Role:{{role}}</li>
+        <li> Gender: {{gender}}</li>
+        <li> Username: {{username}}</li>
+        <li> Name: {{name}}</li>
+        <li> Last Name: {{lastname}}</li>
+        <button>X</button>
+        <form action="/user/{{id}}/addfavorite" method="POST">
+            <button>Like</button>
+        </form>
+       
+        </ul>
+    </div>
+</div>
+  {{/each}}

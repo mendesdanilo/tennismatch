@@ -1,0 +1,17 @@
+#navbarNavAltMarkup {
+  justify-content: flex-end;
+}
+
+.div-logsig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h4 {
+  text-align: center;
+}
+
+.navbar-brand {
+  font-family: Lobster, Monospace;
+}
